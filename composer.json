@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "require": {
+    "google/cloud-functions-framework": "^1.0",
+    "nfephp-org/sped-da": "^1.0"
+  },
+  "scripts": {
+    "start": "$env:FUNCTION_TARGET='gerarDANFE' && php -S localhost:8080 vendor/google/cloud-functions-framework/router.php",
+    "deploy": "gcloud functions deploy gerarDANFE --runtime=php74 --entry-point=gerarDANFE --trigger-http --allow-unauthenticated --region=southamerica-east1 --security-level=secure-always"
+  }
+}
