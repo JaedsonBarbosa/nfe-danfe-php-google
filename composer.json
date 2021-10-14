@@ -7,6 +7,6 @@
   "scripts": {
     "setenv": "$env:FUNCTION_TARGET='gerarDANFE'",
     "start": "php -S localhost:8080 vendor/google/cloud-functions-framework/router.php",
-    "deploy": "gcloud functions deploy gerarDANFE --runtime=php74 --entry-point='gerarDANFE' --trigger-http --allow-unauthenticated --region=southamerica-east1 --security-level=secure-always"
+    "deploy": "gcloud functions deploy gerarDANFE --runtime=php74 --entry-point=gerarDANFE --trigger-http --allow-unauthenticated --region=southamerica-east1 --security-level=secure-always"
   }
 }
