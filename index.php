@@ -15,11 +15,20 @@ function gerarDANFE(ServerRequestInterface $request): ResponseInterface
     $papel = 'A4';
     $margSup = $body->margSup;
     $margEsq = $body->margEsq;
+    $logotipo = $body->logotipo;
 
     $danfe = new Danfe($xml);
     $danfe->debugMode(false);
     $danfe->printParameters($orientacao, $papel, $margSup, $margEsq);
     $danfe->creditsIntegratorFooter('NFe Fácil - https://nfefacil.net');
+
+    if (isset($logotipo)) {
+        $imagem = $logotipo->imagem;
+        $alinhamento = $logotipo->alinhamento;
+        $monocromatico = $logotipo->monocromatico;
+        $danfe->logoParameters($imagem, $alinhamento, $monocromatico);
+    }
+
     $pdf = $danfe->render();
     return (new Response())
         ->withBody(Utils::streamFor($pdf))
